@@ -1,0 +1,19 @@
+{
+  "name": "future-of-canjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck future.mdx"
+  },
+  "keywords": [],
+  "author": "Kevin Phillips <kevin@bitovi.com>",
+  "license": "MIT",
+  "dependencies": {
+    "can": "^5.27.7",
+    "mdx-deck": "^1.10.2",
+    "mdx-deck-code-surfer": "^0.5.5",
+    "prism-react-renderer": "^0.1.6",
+    "raw-loader": "^2.0.0"
+  }
+}

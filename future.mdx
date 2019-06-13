@@ -1,0 +1,276 @@
+import { Head, Image, Notes } from "mdx-deck";
+import { CodeSurfer } from "mdx-deck-code-surfer";
+import { Appear } from "mdx-deck";
+
+export { theme } from "theme";
+
+<Head>
+  <title>The Future of CanJS</title>
+</Head>
+
+# The Future of CanJS
+
+<small>Kevin Phillips - CanJS Core Team Member</small>
+
+---
+
+# CanJS
+
+Build CRUD apps in fewer lines of code
+
+---
+
+# CanJS 6.0
+
+<ul>
+  <Appear>
+    <li>Improved observables</li>
+    <li>Custom elements</li>
+    <li>Removal of nodeLists</li>
+  </Appear>
+</ul>
+
+---
+
+<CodeSurfer
+  title="Basic Example"
+  code={require("!raw-loader!./examples/counters.js").default}
+  lang="javascript"
+  steps={[
+    { notes: "Basic Example" },
+    { lines: [ 1 ], notes: "new APIs for elements, observables, and types" },
+    { range: [ 3, 13 ], notes: "DefineObject for defining observable objects" },
+    { range: [ 15,17 ], notes: "DefineArray for defining observable arrays" },
+    { lines: [ 16 ], notes: "can-type for working with types" },
+    { range: [ 19, 37 ], notes: "StacheDefineElement for creating custom element constructors" },
+    { lines: [ 38 ], notes: "used to define custom elements" }
+  ]}
+/>
+
+---
+
+import "examples/counters";
+
+<count-ers></count-ers>
+
+---
+
+# Improved observables
+
+<ul>
+  <Appear>
+    <li>JavaScript classes</li>
+    <li>Simpler property definitions</li>
+    <li>Observable expando properties</li>
+    <li>Strict types by default</li>
+    <li>Required properties</li>
+  </Appear>
+</ul>
+
+---
+
+<CodeSurfer
+  title="Improved observables"
+  code={require("!raw-loader!./examples/classes.js").default}
+  lang="javascript"
+  steps={[
+    { notes: "normal JS classes" },
+    { lines: [ 3 ], notes: "normal JS classes" },
+    { range: [ 4, 7 ], notes: "use `static define` to create well-defined properties on the class" }
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="Improved observables"
+  code={require("!raw-loader!./examples/simplified-definitions.js").default}
+  lang="javascript"
+  steps={[
+    { notes: "Simpler Property Definitions" },
+    { range: [ 5, 12 ], notes: "no more `get(lastSet, resolve) {}`" },
+    { range: [ 13, 17 ], notes: "async props can return a promise to resolve with the value" },
+    { lines: [ 18 ], notes: "no `type: 'boolean'` , `type: 'string'`, `type: 'number'`" },
+    { lines: [ 19 ], notes: "also no `type` vs `Type` distinction" },
+    { lines: [ 20 ], notes: "same for `default` vs `Default`" },
+    { range: [ 21, 23 ], notes: "can use primitives in defaults shorthand" },
+    { range: [ 24, 26 ], notes: "can use functions as defaults" },
+    { lines: [ 27 ], notes: "useful for renderer functions" },
+    { range: [ 28, 32 ], notes: "`get default(){}` for objects" },
+    { range: [ 33, 38 ], notes: "enumerable and serialize are separate" }
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="Improved observables"
+  code={require("!raw-loader!./examples/expando.js").default}
+  lang="javascript"
+  steps={[
+    { notes: "Expando properties are observable" },
+    { lines: [ 4 ], notes: "no defined properties" },
+    { lines: [ 9 ], notes: "can observe undefined properties" },
+    { lines: [ 11 ], notes: "initial set triggers an event" },
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="Improved observables"
+  code={require("!raw-loader!./examples/strict-types.js").default}
+  lang="javascript"
+  steps={[
+    { notes: "Strict types by default" },
+    { lines: [ 5 ], notes: "types are strict by default" },
+    { lines: [ 16 ], notes: "they can be set to values of that type" },
+    { lines: [ 17, 18 ], notes: "setting to a value of another type will throw" },
+    { lines: [ 6 ], notes: "the type shorthand also sets up a strict type" },
+    { lines: [ 20 ], notes: "again, they can be set to values of that type" },
+    { lines: [ 21, 22 ], notes: "again, setting to a value of another type will throw" },
+    { lines: [ 7 ], notes: "the default shorthand also sets up a strict type" },
+    { lines: [ 24, 25 ], notes: "again, setting to a value of another type will throw" },
+    { range: [ 8, 10 ], notes: "the `can-type` package can be used if you don't want strict types" },
+    { range: [ 27, 31 ], notes: "type.maybe lets the value be the type or null or undefined" },
+    { range: [ 33, 36 ], notes: "type.convert will convert any value to the type" },
+    { range: [ 38, 41 ], notes: "type.maybeConvert supports the can-define behavior" }
+  ]}
+/>
+
+---
+
+<CodeSurfer
+  title="Improved observables"
+  code={require("!raw-loader!./examples/required-properties.js").default}
+  lang="javascript"
+  steps={[
+    { notes: "properties can be marked as required" },
+    { lines: [ 5 ], notes: "can mark a property on a DefineObject as `required`" },
+    { lines: [ 9 ] , notes: "creating an instance with the property works" },
+    { lines: [ 10, 11 ] , notes: "creating an instance without the property throws" },
+    { lines: [ 18 ], notes: "can also mark a property on a StacheDefineElement as `required`" },
+    { lines: [ 23 ], notes: "creating an element with that property works" },
+    { lines: [ 25, 26 ], notes: "creating an element without that property throws" }
+  ]}
+/>
+
+---
+
+# Custom elements
+
+<ul>
+  <Appear>
+    <li>real custom elements</li>
+    <li>better lifecycle methods and hooks</li>
+  </Appear>
+</ul>
+
+---
+
+<Notes>with real custom elements, the element is the viewmodel</Notes>
+
+<Image src="assets/real-element.gif" size="contain" />
+
+---
+
+<CodeSurfer
+  title="Works with any framework"
+  code={require("!raw-loader!./examples/react-counter.js").default}
+  lang="javascript"
+  steps={[
+    { range: [ 5, 24 ], notes: "Normal StacheDefineElement" },
+    { range: [ 26, 51 ], notes: "React Component" },
+    { lines: [ 47 ], notes: "Render in React" },
+    { tokens: { 47: [ 4, 5, 6, 7, 8 ] }, range: [ 27, 43 ], notes: "Hook it up" },
+  ]}
+/>
+
+---
+
+import { ReactCounter } from "examples/react-counter";
+
+<ReactCounter />
+
+<Notes>
+  React is probably the hardest framework to integrate custom elements into.
+  But it is still relatively easy.
+</Notes>
+
+---
+
+<CodeSurfer
+  title="Lifecycle hooks and methods"
+  code={require("!raw-loader!./examples/lifecycle-hooks-and-methods.js").default}
+  lang="javascript"
+  steps={[
+    { notes: "Designed to make integration and testing easier" },
+		{ range: [ 3, 30 ], notes: "Normal use" },
+		{ range: [ 12, 20 ], notes: "`connected` hook called when the component is in the page" },
+		{ range: [ 12, 20 ], notes: "no need to call `super.connectedCallback()` ..." },
+		{ range: [ 17, 19 ], notes: "can tear down right in the same scope by returning a function" },
+		{ range: [ 17, 19 ], notes: "there is also a `disconnected` for teardowns that don't need setup" },
+		{ range: [ 35, 66 ], notes: "lifecycle methods available to make testing easier" },
+		{ range: [ 60, 66 ], notes: "`initialize` an element to test its properties" },
+		{ range: [ 71, 79 ], notes: "`render` an element to test its properties and its view" },
+		{ range: [ 84, 96 ], notes: "`connect` an element to test its properties, its view, and its connected hook" },
+  ]}
+/>
+
+---
+
+# "When can I use it?"
+
+<ul>
+  <Appear>
+    <li>Finish removing nodeLists</li>
+    <li>Iterate and fix bugs</li>
+    <li>codemods</li>
+  </Appear>
+</ul>
+
+---
+
+# What comes next?
+
+<ul>
+  <Appear>
+    <li>elements for CRUD operations</li>
+    <li>experiment with views and state management solutions</li>
+  </Appear>
+</ul>
+
+---
+
+# can-crud
+
+<ul>
+  <Appear>
+    <li>&#x3C;can-crud type:from=&#x22;this.Todo&#x22; /&#x3E;</li>
+    <li>&#x3C;can-create type:from=&#x22;this.Todo&#x22; /&#x3E;</li>
+    <li>&#x3C;can-edit type:from=&#x22;this.Todo&#x22; /&#x3E;</li>
+    <li>&#x3C;can-list type:from=&#x22;this.Todo&#x22; /&#x3E;</li>
+  </Appear>
+</ul>
+
+---
+
+<Image src="assets/can-crud.png" size="contain" />
+
+---
+
+# Views and state management
+
+<ul>
+  <Appear>
+    <li>JSX</li>
+    <li>lit-html</li>
+    <li>Hooks</li>
+    <li>Reducers</li>
+    <li>RxJS</li>
+  </Appear>
+</ul>
+
+---
+
+Thanks!
