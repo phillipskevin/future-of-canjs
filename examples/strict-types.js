@@ -3,8 +3,6 @@ import { DefineObject, type } from "can";
 class Obj extends DefineObject {
   static define = {
     number: { type: Number },
-    string: String,
-    boolean: false,
     maybeString: { type: type.maybe(String) },
     convertString: { type: type.convert(String) },
     maybeConvertString: { type: type.maybeConvert(String) }
@@ -16,13 +14,6 @@ const obj = new Obj();
 obj.number = 5; // -> 5
 obj.number = "10";
 // Uncaught Error: Type value '10' is not of type Number.
-
-obj.string = "🤡"; // -> 🤡
-obj.string = false;
-// Uncaught Error: Type value 'false' is not of type String.
-
-obj.boolean = "true";
-// Uncaught Error: Type value 'true' is not of type Boolean.
 
 obj.maybeString = "Hi"; // -> "Hi"
 obj.maybeString = null; // -> null

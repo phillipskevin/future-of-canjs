@@ -90,7 +90,7 @@ import "examples/counters";
     { notes: "Simpler Property Definitions" },
     { range: [ 5, 12 ], notes: "no more `get(lastSet, resolve) {}`" },
     { range: [ 13, 17 ], notes: "async props can return a promise to resolve with the value" },
-    { lines: [ 18 ], notes: "no `type: 'boolean'` , `type: 'string'`, `type: 'number'`" },
+    { lines: [ 18 ], notes: '👋 type: "boolean" , type: "string", type: "number"' },
     { lines: [ 19 ], notes: "also no `type` vs `Type` distinction" },
     { lines: [ 20 ], notes: "same for `default` vs `Default`" },
     { range: [ 21, 23 ], notes: "can use primitives in defaults shorthand" },
@@ -111,7 +111,7 @@ import "examples/counters";
     { notes: "Expando properties are observable" },
     { lines: [ 4 ], notes: "no defined properties" },
     { lines: [ 9 ], notes: "can observe undefined properties" },
-    { lines: [ 11 ], notes: "initial set triggers an event" },
+    { lines: [ 11 ], notes: '👋 set("completed", false)' },
   ]}
 />
 
@@ -123,18 +123,13 @@ import "examples/counters";
   lang="javascript"
   steps={[
     { notes: "Strict types by default" },
-    { lines: [ 5 ], notes: "types are strict by default" },
-    { lines: [ 16 ], notes: "they can be set to values of that type" },
-    { lines: [ 17, 18 ], notes: "setting to a value of another type will throw" },
-    { lines: [ 6 ], notes: "the type shorthand also sets up a strict type" },
-    { lines: [ 20 ], notes: "again, they can be set to values of that type" },
-    { lines: [ 21, 22 ], notes: "again, setting to a value of another type will throw" },
-    { lines: [ 7 ], notes: "the default shorthand also sets up a strict type" },
-    { lines: [ 24, 25 ], notes: "again, setting to a value of another type will throw" },
-    { range: [ 8, 10 ], notes: "the `can-type` package can be used if you don't want strict types" },
-    { range: [ 27, 31 ], notes: "type.maybe lets the value be the type or null or undefined" },
-    { range: [ 33, 36 ], notes: "type.convert will convert any value to the type" },
-    { range: [ 38, 41 ], notes: "type.maybeConvert supports the can-define behavior" }
+    { lines: [ 5 ], notes: "define a property as a Number" },
+    { lines: [ 14 ], notes: "it can be set to a Number" },
+    { lines: [ 15, 16 ], notes: "setting it to a non-number throws" },
+    { range: [ 6, 8 ], notes: "the `can-type` package can be used if you don't want strict types" },
+    { range: [ 18, 22 ], notes: "type.maybe lets the value be the type or null or undefined" },
+    { range: [ 24, 27 ], notes: "type.convert will convert any value to the type" },
+    { range: [ 29, 32 ], notes: "type.maybeConvert supports the can-define behavior" }
   ]}
 />
 
@@ -157,7 +152,7 @@ import "examples/counters";
 
 ---
 
-# Custom elements
+# Component improvements
 
 <ul>
   <Appear>
@@ -179,7 +174,7 @@ import "examples/counters";
   code={require("!raw-loader!./examples/react-counter.js").default}
   lang="javascript"
   steps={[
-    { range: [ 5, 24 ], notes: "Normal StacheDefineElement" },
+    { range: [ 5, 24 ], notes: "Counter element" },
     { range: [ 26, 51 ], notes: "React Component" },
     { lines: [ 47 ], notes: "Render in React" },
     { tokens: { 47: [ 4, 5, 6, 7, 8 ] }, range: [ 27, 43 ], notes: "Hook it up" },
@@ -205,7 +200,7 @@ import { ReactCounter } from "examples/react-counter";
   lang="javascript"
   steps={[
     { notes: "Designed to make integration and testing easier" },
-		{ range: [ 3, 30 ], notes: "Normal use" },
+		{ range: [ 3, 30 ], notes: "Timer element" },
 		{ range: [ 12, 20 ], notes: "`connected` hook called when the component is in the page" },
 		{ range: [ 12, 20 ], notes: "no need to call `super.connectedCallback()` ..." },
 		{ range: [ 17, 19 ], notes: "can tear down right in the same scope by returning a function" },
@@ -220,6 +215,19 @@ import { ReactCounter } from "examples/react-counter";
 ---
 
 # "When can I use it?"
+
+<ul>
+  <Appear>
+    <li>Now</li>
+    <li>Available in CanJS 5.x</li>
+    <li>Currently Ecosystem packages</li>
+    <li>Upgraded to Core in 6.0</li>
+  </Appear>
+</ul>
+
+---
+
+# CanJS 6.0
 
 <ul>
   <Appear>
